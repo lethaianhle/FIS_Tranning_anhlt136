@@ -16,3 +16,15 @@ Tranning course deepstruction at FIS
 
  * Spring
 
+## Sprint:
+
+ * Sprint 1: DataModel + DAO in Mem
+
+ * Sprint 2: JDBC + UT + Logger
+
+ * Sprint 3: JPA + RestAPI + SpringTest
+
+ * Sprint 4: API + Security
+
+ * Final Project
+
