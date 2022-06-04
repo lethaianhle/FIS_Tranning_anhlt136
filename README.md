@@ -4,17 +4,17 @@
 
 Tranning course deepstruction at FIS
 
-## Note:
+Email: anhlt136@fpt.com.vn
 
- * email: anhlt136@fpt.com.vn
+## Structure:
 
- * Java Core
+ * Final Project -> 
 
- * JDBC
+ * Project -> Sprint Project
 
- * Jsp/Servlet
+ * Topic_00
 
- * Spring
+ * Topic_01
 
 ## Sprint:
 
