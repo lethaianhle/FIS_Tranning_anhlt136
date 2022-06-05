@@ -30,4 +30,11 @@ public class SummaryCustomerByAgeDTO {
         this.count = count;
     }
 
+    @Override
+    public String toString() {
+        return "SummaryCustomerByAgeDTO{" +
+                "age=" + age +
+                ", count=" + count +
+                '}';
+    }
 }

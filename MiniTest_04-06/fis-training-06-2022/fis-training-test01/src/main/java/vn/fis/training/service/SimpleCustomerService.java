@@ -106,7 +106,23 @@ public class SimpleCustomerService implements CustomerService{
     @Override
     public List<SummaryCustomerByAgeDTO> summaryCustomerByAgeOrderByAgeDesc() {
         //TODO: Implement method tho dung dac ta cua CustomerService interface
-        return null;
+        List<SummaryCustomerByAgeDTO> summaryCustomerByAgeDTOList = new ArrayList<>();
+
+        Map<Object, List<Customer>> mapCustomerGroupByAge = customerStore.findAll().stream()
+                .collect(Collectors.groupingBy(Customer::getAge));
+
+        mapCustomerGroupByAge.entrySet()
+                .stream().map(Map.Entry::getValue).collect(Collectors.toList())
+                .stream().forEach(s -> {
+                    SummaryCustomerByAgeDTO summaryCustomerByAgeDTO = new SummaryCustomerByAgeDTO();
+                    summaryCustomerByAgeDTO.setAge(s.get(0).getAge());
+                    summaryCustomerByAgeDTO.setCount(s.size());
+                    summaryCustomerByAgeDTOList.add(summaryCustomerByAgeDTO);
+                });
+
+        return summaryCustomerByAgeDTOList.stream()
+                .sorted(Comparator.comparingInt(SummaryCustomerByAgeDTO::getAge).reversed())
+                .collect(Collectors.toList());
     }
 
     // check valid data customer obj
@@ -169,8 +185,7 @@ public class SimpleCustomerService implements CustomerService{
 
     // check duplicate customer
     private boolean isDuplicate(Customer customer) {
-        List<Customer> listCustomer = customerStore.findAll();
-        return listCustomer.stream()
+        return customerStore.findAll().stream()
                 .anyMatch(cs -> cs.getMobile().equals(customer.getMobile()));
     }
 
@@ -192,7 +207,7 @@ public class SimpleCustomerService implements CustomerService{
                 .build();
         Customer customer3 = new Customer.Builder()
                 .name("Binh An")
-                .birthday(LocalDate.of(2000, Month.MAY, 15))
+                .birthday(LocalDate.of(2002, Month.MAY, 15))
                 .mobile("0981  3813")
                 .createDateTime(localDateTime)
                 .build();

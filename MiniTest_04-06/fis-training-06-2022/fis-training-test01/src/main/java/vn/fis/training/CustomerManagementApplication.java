@@ -5,12 +5,16 @@ import vn.fis.training.domain.Customer;
 import vn.fis.training.domain.CustomerStatus;
 import vn.fis.training.service.CustomerService;
 import vn.fis.training.service.SimpleCustomerService;
+import vn.fis.training.service.SummaryCustomerByAgeDTO;
 import vn.fis.training.store.InMemoryCustomerStore;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CustomerManagementApplication
 {
@@ -27,6 +31,12 @@ public class CustomerManagementApplication
         System.out.println("------Danh sach customer order asc------");
         List<Customer> listAllCustomer = customerService.findAllOrderByNameAsc();
         listAllCustomer.forEach(cs -> System.out.println(cs));
+
+
+        System.out.println("");
+        System.out.println("------Danh sach customer group by age desc(dto obj)------");
+        List<SummaryCustomerByAgeDTO> summaryCustomerByAgeDTOList = customerService.summaryCustomerByAgeOrderByAgeDesc();
+        summaryCustomerByAgeDTOList.forEach(dto -> System.out.println(dto));
 
         System.out.println("");
         System.out.println("------Danh sach customer order asc limit 2------");
@@ -76,7 +86,6 @@ public class CustomerManagementApplication
             System.out.println("--> Danh sach customer tim duoc:");
             listAllCustomerByNameLikeOrderByNameAsc.forEach(cs -> System.out.println(cs));
         }
-
 
     }
     // TODO: Implement method to test all CustomerService
