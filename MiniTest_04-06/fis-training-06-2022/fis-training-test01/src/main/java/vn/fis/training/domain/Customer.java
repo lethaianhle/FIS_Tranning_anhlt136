@@ -162,6 +162,10 @@ public class Customer {
         this.createDateTime = createDateTime;
     }
 
+    public int getAge() {
+        return LocalDate.now().getYear() - this.birthDay.getYear();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -186,5 +190,17 @@ public class Customer {
         result = 31 * result + status.hashCode();
         result = 31 * result + createDateTime.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", birthDay=" + birthDay +
+                ", mobile='" + mobile + '\'' +
+                ", status=" + status +
+                ", createDateTime=" + createDateTime +
+                '}';
     }
 }
