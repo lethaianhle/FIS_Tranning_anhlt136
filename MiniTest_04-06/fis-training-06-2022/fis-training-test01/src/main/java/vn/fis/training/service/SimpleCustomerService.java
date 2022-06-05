@@ -143,7 +143,7 @@ public class SimpleCustomerService implements CustomerService{
             throw new InvalidCustomerException(customer, "Customer's birthday is invalid");
         }
 
-        if (!customer.getMobile().matches("[0-9]{1,10}")) {
+        if (!customer.getMobile().matches("^0[0-9]{1,10}")) {
             throw new InvalidCustomerException(customer, "Customer's mobile is invalid");
         }
 
@@ -157,30 +157,23 @@ public class SimpleCustomerService implements CustomerService{
 
     // remove blank in mobile field
     private String removeBlankMobile(String mobile) {
-        String result = mobile.trim().toLowerCase();
-        result = result.replaceAll("\\s+", "");
-        return result;
+        return mobile.trim().replaceAll("\\s+", "");
     }
 
-    // chuan hoa chuoi name
+    // standardized name
     private String standardized(String name) {
-        // remove blank
-        String standardized = name.trim().toLowerCase();
-        standardized = standardized.replaceAll("\\s+", " ");
+        String[] arr = name.trim().toLowerCase()
+                .replaceAll("\\s+", " ")
+                .split(" ");
 
-        // uppercase first letter
-        String[] temp = standardized.split(" ");
+        StringBuilder stringBuilder = new StringBuilder("");
 
-        standardized = "";
-        for (int i = 0; i < temp.length; i++) {
-            standardized += String.valueOf(temp[i].charAt(0)).toUpperCase()
-                    + temp[i].substring(1);
+        Arrays.stream(arr).forEach(s -> stringBuilder
+                .append(String.valueOf(s.charAt(0)).toUpperCase())
+                .append(s.substring(1))
+                .append(" "));
 
-            if (i < temp.length - 1)
-                standardized += " ";
-        }
-
-        return standardized;
+        return stringBuilder.toString().trim();
     }
 
     // check duplicate customer
