@@ -45,7 +45,7 @@ public class CustomerManagementApplication
                 .name("Updated Customer")
                 .birthday(LocalDate.of(2008, Month.MAY, 28))
                 .status(CustomerStatus.INACTIVE)
-                .mobile("0981387    13")
+                .mobile("09")
                 .createDateTime(existedCustomer.getCreateDateTime())
                 .build();
 
@@ -80,5 +80,4 @@ public class CustomerManagementApplication
 
     }
     // TODO: Implement method to test all CustomerService
-    // Em chua test kip lan nao a :<
 }
