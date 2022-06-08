@@ -3,13 +3,21 @@ package fis.java.bigexample.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class Storage  extends AbstractEntity{
+public class Storage  extends AbstractEntity {
     private String name;
+
     private String location;
+
     private Set<Evidence> evidenceSet;
 
     public Storage() {
         super();
+    }
+
+    public Storage(String name, String location, Set<Evidence> evidenceSet) {
+        this.name = name;
+        this.location = location;
+        this.evidenceSet = evidenceSet;
     }
 
     public Storage(Long id,

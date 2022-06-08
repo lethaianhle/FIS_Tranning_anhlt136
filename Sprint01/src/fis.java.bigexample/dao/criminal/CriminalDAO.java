@@ -2,7 +2,7 @@ package fis.java.bigexample.dao.criminal;
 
 import fis.java.bigexample.model.CriminalCase;
 
-public class DAOCriminal implements IDAOCriminal {
+public class CriminalDAO implements ICriminalDAO {
     @Override
     public void add(CriminalCase criminalCase) {
 

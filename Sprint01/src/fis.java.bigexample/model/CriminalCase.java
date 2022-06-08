@@ -8,16 +8,44 @@ import java.util.Set;
 
 public class CriminalCase extends AbstractEntity {
     private String number;
+
     private CaseType type;
+
     private String shortDescription;
+
     private String detailedDescription;
+
     private CaseStatus status;
+
     private String notes;
+
     private Set<Evidence> evidencesSet;
+
     private Detective leadInvestigator;
+
     private Set<Detective> assigned;
 
     public CriminalCase() {
+    }
+
+    public CriminalCase(String number,
+                        CaseType type,
+                        String shortDescription,
+                        String detailedDescription,
+                        CaseStatus status,
+                        String notes,
+                        Set<Evidence> evidencesSet,
+                        Detective leadInvestigator,
+                        Set<Detective> assigned) {
+        this.number = number;
+        this.type = type;
+        this.shortDescription = shortDescription;
+        this.detailedDescription = detailedDescription;
+        this.status = status;
+        this.notes = notes;
+        this.evidencesSet = evidencesSet;
+        this.leadInvestigator = leadInvestigator;
+        this.assigned = assigned;
     }
 
     public CriminalCase(Long id, int version, LocalDateTime createdAt, LocalDateTime modifiedAt,

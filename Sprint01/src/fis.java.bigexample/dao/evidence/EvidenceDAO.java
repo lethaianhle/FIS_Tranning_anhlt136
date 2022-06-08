@@ -2,7 +2,7 @@ package fis.java.bigexample.dao.evidence;
 
 import fis.java.bigexample.model.Evidence;
 
-public class DAOEvidence implements IDAOEvidence {
+public class EvidenceDAO implements IEvidenceDAO {
     @Override
     public void add(Evidence evidence) {
 

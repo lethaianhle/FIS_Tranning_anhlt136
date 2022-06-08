@@ -1,17 +1,25 @@
 package fis.java.bigexample.model.enums;
 
 public enum Rank {
-    TRAINEE,
+    TRAINEE(1),
 
-    JUNIOR,
+    JUNIOR(2),
 
-    SENIOR,
+    SENIOR(3),
 
-    INSPECTOR,
+    INSPECTOR(4),
 
-    CHEF_INSPECTOR;
+    CHEF_INSPECTOR(5);
 
     private int code;
+
+    Rank() {
+
+    }
+
+    Rank(int code) {
+        this.code = code;
+    }
 
     public int getCode() {
         return code;

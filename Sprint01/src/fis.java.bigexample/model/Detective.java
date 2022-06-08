@@ -9,28 +9,50 @@ import java.util.Set;
 
 public class Detective extends AbstractEntity {
     private  String userName;
+
     private String firstName;
+
     private String lastName;
+
     private String password;
+
     private LocalDateTime hiringDate;
+
     private  Person person;
+
     private String badgeNumber;
+
     private Rank rank;
+
     private  Boolean armed;
+
     private EmploymentStatus status;
+
     private Set<CriminalCase> criminalCases;
+
     private Set<TrackEntry> trackEntries;
 
     public Detective() {
+
     }
 
-    public Detective(Long id, int version, LocalDateTime createdAt, LocalDateTime modifiedAt, Person person,
-                     String badgeNumber, Rank rank, Boolean armed, EmploymentStatus status,
-                     Set<CriminalCase> criminalCases, Set<TrackEntry> trackEntries) {
-        this.id = id;
-        this.version = version;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+    public Detective(String userName,
+                     String firstName,
+                     String lastName,
+                     String password,
+                     LocalDateTime hiringDate,
+                     Person person,
+                     String badgeNumber,
+                     Rank rank,
+                     Boolean armed,
+                     EmploymentStatus status,
+                     Set<CriminalCase> criminalCases,
+                     Set<TrackEntry> trackEntries) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.hiringDate = hiringDate;
         this.person = person;
         this.badgeNumber = badgeNumber;
         this.rank = rank;
@@ -40,42 +62,72 @@ public class Detective extends AbstractEntity {
         this.trackEntries = trackEntries;
     }
 
-    public Detective(Long id, Person person,
-                     String badgeNumber, Rank rank, Boolean armed, EmploymentStatus status) {
-        this(id, 1, LocalDateTime.now(), LocalDateTime.now(), person, badgeNumber,rank, armed,status,
-                new HashSet<CriminalCase>(), new HashSet<TrackEntry>());
+    public Detective(Long id, int version, LocalDateTime createdAt, LocalDateTime modifiedAt,
+                     String userName,
+                     String firstName,
+                     String lastName,
+                     String password,
+                     LocalDateTime hiringDate,
+                     Person person,
+                     String badgeNumber,
+                     Rank rank,
+                     Boolean armed,
+                     EmploymentStatus status,
+                     Set<CriminalCase> criminalCases,
+                     Set<TrackEntry> trackEntries) {
+        super(id, version, createdAt, modifiedAt);
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.hiringDate = hiringDate;
+        this.person = person;
+        this.badgeNumber = badgeNumber;
+        this.rank = rank;
+        this.armed = armed;
+        this.status = status;
+        this.criminalCases = criminalCases;
+        this.trackEntries = trackEntries;
     }
 
-    public Long getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public int getVersion() {
-        return version;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public LocalDateTime getModifiedAt() {
-        return modifiedAt;
+    public String getPassword() {
+        return password;
     }
 
-    public void setModifiedAt(LocalDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getHiringDate() {
+        return hiringDate;
+    }
+
+    public void setHiringDate(LocalDateTime hiringDate) {
+        this.hiringDate = hiringDate;
     }
 
     public Person getPerson() {
