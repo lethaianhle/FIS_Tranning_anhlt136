@@ -1,5 +1,6 @@
-package fis.java.bigexample.dao.criminal;
+package fis.java.bigexample.dao.imp;
 
+import fis.java.bigexample.dao.ICriminalDAO;
 import fis.java.bigexample.model.CriminalCase;
 
 public class CriminalDAO implements ICriminalDAO {

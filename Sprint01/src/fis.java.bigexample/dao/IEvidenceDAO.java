@@ -1,4 +1,4 @@
-package fis.java.bigexample.dao.evidence;
+package fis.java.bigexample.dao;
 
 import fis.java.bigexample.model.Evidence;
 

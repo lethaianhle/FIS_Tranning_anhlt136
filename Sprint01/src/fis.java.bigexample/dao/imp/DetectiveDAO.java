@@ -1,5 +1,6 @@
-package fis.java.bigexample.dao.detective;
+package fis.java.bigexample.dao.imp;
 
+import fis.java.bigexample.dao.IDetectiveDAO;
 import fis.java.bigexample.model.Detective;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package fis.java.bigexample.dao.criminal;
+package fis.java.bigexample.dao;
 
 import fis.java.bigexample.model.CriminalCase;
 

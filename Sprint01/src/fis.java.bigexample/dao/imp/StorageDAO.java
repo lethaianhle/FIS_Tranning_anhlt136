@@ -1,5 +1,6 @@
-package fis.java.bigexample.dao.storage;
+package fis.java.bigexample.dao.imp;
 
+import fis.java.bigexample.dao.IStorageDAO;
 import fis.java.bigexample.model.Storage;
 
 public class StorageDAO implements IStorageDAO {

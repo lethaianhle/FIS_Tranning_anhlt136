@@ -1,4 +1,4 @@
-package fis.java.bigexample.dao.detective;
+package fis.java.bigexample.dao;
 
 import fis.java.bigexample.model.Detective;
 
