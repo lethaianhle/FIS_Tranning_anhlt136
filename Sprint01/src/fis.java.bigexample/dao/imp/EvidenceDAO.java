@@ -15,10 +15,10 @@ public class EvidenceDAO implements IEvidenceDAO {
     }
 
     //Apply Singleton Pattern for DAO class
-    private static EvidenceDAO instance = new EvidenceDAO();
+    private static EvidenceDAO evidenceDAO = null;
 
-    public static EvidenceDAO getInstance(){
-        return instance;
+    public static EvidenceDAO getInstance() {
+        return evidenceDAO == null ? new EvidenceDAO() : evidenceDAO;
     }
 
     @Override
