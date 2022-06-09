@@ -1,4 +1,6 @@
 package com.fis.cems.dao;
 
-public interface IEvidenceDAO {
+import com.fis.cems.model.Evidence;
+
+public interface IEvidenceDAO extends GenericDAO<Evidence> {
 }

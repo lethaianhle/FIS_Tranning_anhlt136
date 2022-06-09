@@ -176,4 +176,19 @@ public class CriminalCase extends AbstractEntity {
         result = 31 * result + (assigned != null ? assigned.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "CriminalCase{" +
+                "number='" + number + '\'' +
+                ", type=" + type +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", detailedDescription='" + detailedDescription + '\'' +
+                ", status=" + status +
+                ", notes='" + notes + '\'' +
+                ", evidenceSet=" + evidenceSet +
+                ", leadInvestigator=" + leadInvestigator +
+                ", assigned=" + assigned +
+                '}';
+    }
 }
