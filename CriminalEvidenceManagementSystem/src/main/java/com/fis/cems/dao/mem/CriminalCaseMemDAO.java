@@ -2,6 +2,7 @@ package com.fis.cems.dao.mem;
 
 import com.fis.cems.dao.ICriminalCaseDAO;
 import com.fis.cems.model.CriminalCase;
+import com.fis.cems.model.enums.CaseType;
 import com.fis.cems.util.MemoryStorageUtil;
 
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ public class CriminalCaseMemDAO implements ICriminalCaseDAO {
 
     @Override
     public CriminalCase save(CriminalCase criminalCase) {
-
         if (criminalCase.getId() < 0) return null;
 
         if (criminalCase.getId() == null) {
@@ -53,4 +53,8 @@ public class CriminalCaseMemDAO implements ICriminalCaseDAO {
         return database.containsKey(id);
     }
 
+    @Override
+    public List<CriminalCase> findByCaseType(CaseType caseType) {
+        return null;
+    }
 }
