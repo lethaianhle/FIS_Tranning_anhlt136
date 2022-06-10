@@ -88,14 +88,26 @@ class CriminalCaseMemDAOTest {
 
     @Test
     void count() {
+        CriminalCaseMemDAO criminalCaseMemDAO = new CriminalCaseMemDAO();
+        assertEquals(3, criminalCaseMemDAO.count());
     }
 
     @Test
     void delete() {
+        CriminalCaseMemDAO criminalCaseMemDAO = new CriminalCaseMemDAO();
+        CriminalCase criminalCase2 = new CriminalCase();
+        criminalCase2.setId(2L);
+        criminalCase2.setNumber("CS002");
+        criminalCase2.setType(CaseType.UNCATEGORIZED);
+        criminalCaseMemDAO.delete(criminalCase2);
+
+        criminalCaseMemDAO.findAll().forEach(System.out::println);
+        assertEquals(2, criminalCaseMemDAO.count());
     }
 
     @Test
     void existsById() {
+
     }
 
     @AfterEach

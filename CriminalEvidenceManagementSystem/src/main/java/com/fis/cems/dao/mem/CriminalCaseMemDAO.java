@@ -29,6 +29,10 @@ public class CriminalCaseMemDAO implements ICriminalCaseDAO {
 
         if (criminalCase.getId() < 0) return null;
 
+        if (criminalCase.getId() == null) {
+            criminalCase.setId(database.size() + 1L);
+        }
+
         database.put(criminalCase.getId(), criminalCase);
 
         return database.get(criminalCase.getId());
