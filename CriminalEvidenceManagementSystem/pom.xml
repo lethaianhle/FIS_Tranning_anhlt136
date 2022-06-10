@@ -12,6 +12,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <mysql.connector.version>8.0.29</mysql.connector.version>
+        <junit.version>5.8.2</junit.version>
     </properties>
 
     <dependencies>
@@ -19,7 +20,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.2</version>
+            <version>${junit.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -53,12 +54,6 @@
         <!--			<artifactId>slf4j-log4j12</artifactId>-->
         <!--			<version>1.7.25</version>-->
         <!--		</dependency>-->
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/log4j/apache-log4j-extras -->
         <dependency>
