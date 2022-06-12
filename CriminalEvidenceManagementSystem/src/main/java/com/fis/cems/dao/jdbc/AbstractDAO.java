@@ -2,6 +2,7 @@ package com.fis.cems.dao.jdbc;
 
 import com.fis.cems.dao.GenericDAO;
 import com.fis.cems.mapper.IMapper;
+import com.fis.cems.util.ConnectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,17 +19,9 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     public Connection getConnection() {
         Connection conn = null;
         try {
-            Class.forName(resourceBundle.getString("driverName"));
+            conn = ConnectionUtil.getConnection();
 
-            String user = resourceBundle.getString("user");
-
-            String password = resourceBundle.getString("password");
-
-            String url = resourceBundle.getString("url");
-
-            conn = DriverManager.getConnection(url, user, password);
-
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
             LOGGER.error("Can not connect to database: {}", e.getMessage());
 
             return null;

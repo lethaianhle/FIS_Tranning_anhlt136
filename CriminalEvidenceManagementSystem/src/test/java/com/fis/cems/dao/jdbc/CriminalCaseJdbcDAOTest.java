@@ -3,18 +3,25 @@ package com.fis.cems.dao.jdbc;
 import com.fis.cems.model.CriminalCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CriminalCaseJdbcDAOTest {
-    private CriminalCaseJdbcDAO criminalCaseJdbcDAO = null;
+    private static CriminalCaseJdbcDAO criminalCaseJdbcDAO = null;
+    private static final Logger LOGGER = LoggerFactory.getLogger(CriminalCaseJdbcDAOTest.class);
     @BeforeAll
-    void init() {
+    static void init() {
         criminalCaseJdbcDAO = new CriminalCaseJdbcDAO();
     }
 
     @Test
     void findAll() {
+        List<CriminalCase> criminalCases = criminalCaseJdbcDAO.findAll();
+        criminalCases.forEach(System.out::println);
         assertEquals(3, criminalCaseJdbcDAO.findAll().size());
     }
 
@@ -31,10 +38,14 @@ class CriminalCaseJdbcDAOTest {
 
     @Test
     void count() {
+        long count = criminalCaseJdbcDAO.count();
+        assertEquals(3, count);
     }
 
     @Test
     void delete() {
+        Long id = 2L;
+        criminalCaseJdbcDAO.delete(id);
     }
 
     @Test

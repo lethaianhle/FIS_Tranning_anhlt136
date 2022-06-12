@@ -8,15 +8,33 @@
     <artifactId>CriminalEvidenceManagementSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <developers>
+        <developer>
+            <name>lethaianh</name>
+            <email>anhlt136@fpt.com.vn</email>
+            <organization>FPT.</organization>
+            <organizationUrl>fpt</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+7</timezone>
+        </developer>
+    </developers>
+
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <mysql.connector.version>8.0.29</mysql.connector.version>
         <junit.version>5.8.2</junit.version>
+        <c3p0.version>0.9.5.5</c3p0.version>
+        <hiraki.version>5.0.1</hiraki.version>
+        <slf4j.api.version>1.7.36</slf4j.api.version>
+        <slf4j.log4j12.version>1.7.36</slf4j.log4j12.version>
+        <apache.log4j.extras.version>1.2.17</apache.log4j.extras.version>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -24,49 +42,36 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-ext -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-ext</artifactId>
-            <version>1.7.36</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-
+        <!--SL4F for Log4j-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
+            <version>${slf4j.api.version}</version>
         </dependency>
 
-        <!--		<dependency>-->
-        <!--			<groupId>org.slf4j</groupId>-->
-        <!--			<artifactId>slf4j-simple</artifactId>-->
-        <!--			<version>1.7.5</version>-->
-        <!--		</dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.log4j12.version}</version>
+        </dependency>
 
-        <!-- Log4j-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.slf4j</groupId>-->
-        <!--			<artifactId>slf4j-log4j12</artifactId>-->
-        <!--			<version>1.7.25</version>-->
-        <!--		</dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/log4j/apache-log4j-extras -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
-            <version>1.2.17</version>
+            <version>${apache.log4j.extras.version}</version>
+        </dependency>
+        <!--End SL4F for Log4j-->
+
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
         <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hiraki.version}</version>
         </dependency>
 
         <dependency>

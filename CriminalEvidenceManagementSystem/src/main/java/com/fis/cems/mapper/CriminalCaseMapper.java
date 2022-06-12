@@ -23,7 +23,7 @@ public class CriminalCaseMapper implements IMapper<CriminalCase> {
             criminalCase.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
             criminalCase.setModifiedAt(resultSet.getTimestamp("modified_at").toLocalDateTime());
             criminalCase.setNumber(resultSet.getString("number"));
-            criminalCase.setType(CaseType.valueOf(resultSet.getString("case_type")));
+            criminalCase.setType(CaseType.valueOf(resultSet.getString("type")));
             criminalCase.setShortDescription(resultSet.getString("short_description"));
             criminalCase.setDetailedDescription(resultSet.getString("detailed_description"));
             criminalCase.setStatus(CaseStatus.valueOf(resultSet.getString("status")));
@@ -33,6 +33,7 @@ public class CriminalCaseMapper implements IMapper<CriminalCase> {
             return criminalCase;
         } catch (SQLException ex) {
             LOGGER.error("Can not map data from ResultSet to CriminalCase!");
+            ex.printStackTrace();
             return null;
         }
 

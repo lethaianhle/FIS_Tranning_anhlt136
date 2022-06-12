@@ -27,15 +27,14 @@ public class CriminalCaseJdbcDAO extends AbstractDAO<CriminalCase> implements IC
     @Override
     public CriminalCase save(CriminalCase criminalCase) {
         Long returnedId = null;
+        StringBuilder sqlBuilder = new StringBuilder("");
         if (criminalCase.getId() == null) {
-            StringBuilder sqlBuilder = new StringBuilder("");
             sqlBuilder.append("INSERT INTO criminal_case")
                     .append("(number, type, short_description, detailed_description, status, notes)")
                     .append(" ")
                     .append("values(?, ?, ?, ?, ?, ?)");
-            String sql = sqlBuilder.toString();
 
-            returnedId = super.create(sql, criminalCase.getNumber(),
+            returnedId = super.create(sqlBuilder.toString(), criminalCase.getNumber(),
                                             criminalCase.getType(),
                                             criminalCase.getShortDescription(),
                                             criminalCase.getDetailedDescription(),
@@ -43,7 +42,6 @@ public class CriminalCaseJdbcDAO extends AbstractDAO<CriminalCase> implements IC
                                             criminalCase.getNotes());
 
         } else {
-            StringBuilder sqlBuilder = new StringBuilder("");
             sqlBuilder.append("UPDATE criminal_case")
                     .append("SET number = ?, type = ?, short_description = ?, detailed_description = ?")
                     .append(", status = ?, notes = ?")
@@ -64,7 +62,7 @@ public class CriminalCaseJdbcDAO extends AbstractDAO<CriminalCase> implements IC
 
     @Override
     public long count() {
-        String sql = "SELECT COUNT(*) FROM news";
+        String sql = "SELECT COUNT(*) FROM criminal_case";
         return count(sql);
     }
 
