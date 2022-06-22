@@ -1,6 +1,9 @@
 package com.fis.cems.dao.mem;
 
 import com.fis.cems.dao.IEvidenceDAO;
+import com.fis.cems.exception.DetectiveNotFoundException;
+import com.fis.cems.exception.EvidenceNotFoundException;
+import com.fis.cems.exception.InvalidParamException;
 import com.fis.cems.model.Evidence;
 import com.fis.cems.util.MemoryStorageUtil;
 
@@ -15,7 +18,7 @@ public class EvidenceMemDAO implements IEvidenceDAO {
 
     @Override
     public List<Evidence> findAll() {
-        return new ArrayList<>(database.values());
+        return database.values().stream().toList();
     }
 
     @Override
@@ -27,11 +30,14 @@ public class EvidenceMemDAO implements IEvidenceDAO {
 
     @Override
     public Evidence save(Evidence evidence) {
-        if (evidence.getId() < 0) return null;
-
-        if (evidence.getId() == null) {
+        if (evidence.getId() == null)
             evidence.setId(database.size() + 1L);
-        }
+
+        if (evidence.getId() < 0)
+            throw new InvalidParamException("Invalid evidence with id: " + evidence.getId());
+
+        if (database.containsKey(evidence.getId()))
+            evidence.setId(database.size() + 1L);
 
         database.put(evidence.getId(), evidence);
 
@@ -45,7 +51,11 @@ public class EvidenceMemDAO implements IEvidenceDAO {
 
     @Override
     public void delete(Evidence evidence) {
-        if (evidence.getId() == null || evidence.getId() < 0) return;
+        if (evidence.getId() == null || evidence.getId() <= 0)
+            throw new InvalidParamException("Invalid evidence with id: " + evidence.getId());
+
+        if (findById(evidence.getId()).isEmpty())
+            throw new EvidenceNotFoundException("Evidence with id: " + evidence.getId() + " not found!");
 
         database.remove(evidence.getId(), evidence);
     }
@@ -53,5 +63,10 @@ public class EvidenceMemDAO implements IEvidenceDAO {
     @Override
     public boolean existsById(Long id) {
         return database.containsKey(id);
+    }
+
+    @Override
+    public List<Evidence> findByCriminalNumberOnlyForSenior(String number) {
+        return findAll().stream().filter(evidence -> evidence.getCriminalCase().getNumber().equals(number)).toList();
     }
 }

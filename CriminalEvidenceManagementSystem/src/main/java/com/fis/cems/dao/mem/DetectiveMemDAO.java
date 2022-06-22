@@ -2,6 +2,9 @@
 package com.fis.cems.dao.mem;
 
 import com.fis.cems.dao.IDetectiveDAO;
+import com.fis.cems.exception.CriminalCaseNotFoundException;
+import com.fis.cems.exception.DetectiveNotFoundException;
+import com.fis.cems.exception.InvalidParamException;
 import com.fis.cems.model.Detective;
 import com.fis.cems.util.MemoryStorageUtil;
 
@@ -9,13 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class DetectiveMemDAO implements IDetectiveDAO {
 
-    private static Map<Long, Detective> database = MemoryStorageUtil.getDetectives();
+    private static final Map<Long, Detective> database = MemoryStorageUtil.getDetectives();
     @Override
     public List<Detective> findAll() {
-        return new ArrayList<>(database.values());
+        return database.values().stream().toList();
     }
 
     @Override
@@ -27,11 +31,14 @@ public class DetectiveMemDAO implements IDetectiveDAO {
 
     @Override
     public Detective save(Detective detective) {
-        if (detective.getId() < 0) return null;
-
-        if (detective.getId() == null) {
+        if (detective.getId() == null)
             detective.setId(database.size() + 1L);
-        }
+
+        if (detective.getId() < 0)
+            throw new InvalidParamException("Invalid detective with id: " + detective.getId());
+
+        if (database.containsKey(detective.getId()))
+            detective.setId(database.size() + 1L);
 
         database.put(detective.getId(), detective);
 
@@ -45,7 +52,11 @@ public class DetectiveMemDAO implements IDetectiveDAO {
 
     @Override
     public void delete(Detective detective) {
-        if (detective.getId() == null || detective.getId() < 0) return;
+        if (detective.getId() == null || detective.getId() <= 0)
+            throw new InvalidParamException("Invalid detective with id: " + detective.getId());
+
+        if (findById(detective.getId()).isEmpty())
+            throw new DetectiveNotFoundException("Detective with id: " + detective.getId() + " not found!");
 
         database.remove(detective.getId(), detective);
     }
@@ -54,4 +65,5 @@ public class DetectiveMemDAO implements IDetectiveDAO {
     public boolean existsById(Long id) {
         return database.containsKey(id);
     }
+
 }

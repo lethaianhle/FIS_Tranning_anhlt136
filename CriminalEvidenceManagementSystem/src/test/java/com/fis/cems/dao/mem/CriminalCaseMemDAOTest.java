@@ -1,6 +1,7 @@
 package com.fis.cems.dao.mem;
 
 import com.fis.cems.model.CriminalCase;
+import com.fis.cems.model.enums.CaseStatus;
 import com.fis.cems.model.enums.CaseType;
 import com.fis.cems.util.MemoryStorageUtil;
 import org.junit.jupiter.api.AfterEach;
@@ -25,16 +26,19 @@ class CriminalCaseMemDAOTest {
         criminalCase1.setId(1L);
         criminalCase1.setNumber("CS001");
         criminalCase1.setType(CaseType.UNCATEGORIZED);
+        criminalCase1.setStatus(CaseStatus.CLOSED);
 
         CriminalCase criminalCase2 = new CriminalCase();
         criminalCase2.setId(2L);
         criminalCase2.setNumber("CS002");
         criminalCase2.setType(CaseType.UNCATEGORIZED);
+        criminalCase2.setStatus(CaseStatus.DISMISSED);
 
         CriminalCase criminalCase3 = new CriminalCase();
         criminalCase3.setId(3L);
         criminalCase3.setNumber("CS003");
-        criminalCase3.setType(CaseType.UNCATEGORIZED);
+        criminalCase3.setType(CaseType.FELONY);
+        criminalCase3.setStatus(CaseStatus.DISMISSED);
 
 
         database.put(criminalCase1.getId(), criminalCase1);
@@ -83,7 +87,27 @@ class CriminalCaseMemDAOTest {
     }
 
     @Test
-    void save() {
+    void testUpdateCriminalCase() {
+        Long id = 2L;
+        CriminalCase criminalCase = new CriminalCase();
+        criminalCase.setId(id);
+        criminalCase.setNumber("123");
+
+        CriminalCaseMemDAO criminalCaseMemDAO = new CriminalCaseMemDAO();
+        CriminalCase savedCC = criminalCaseMemDAO.save(criminalCase);
+
+        assertNotNull(savedCC);
+    }
+
+    @Test
+    void testCreateCriminalCase() {
+        CriminalCase criminalCase = new CriminalCase();
+        criminalCase.setNumber("123");
+
+        CriminalCaseMemDAO criminalCaseMemDAO = new CriminalCaseMemDAO();
+        CriminalCase savedCC = criminalCaseMemDAO.save(criminalCase);
+
+        assertEquals(criminalCaseMemDAO.findAll().size(), savedCC.getId());
     }
 
     @Test
@@ -108,6 +132,13 @@ class CriminalCaseMemDAOTest {
     @Test
     void existsById() {
 
+    }
+
+    @Test
+    void findByCaseStatus() {
+        CriminalCaseMemDAO criminalCaseMemDAO = new CriminalCaseMemDAO();
+        List<CriminalCase> criminalCases = criminalCaseMemDAO.findByCaseStatusOnlyForChiefRank(CaseStatus.DISMISSED);
+        assertNotNull(criminalCases);
     }
 
     @AfterEach
