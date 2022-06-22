@@ -1,9 +1,12 @@
 package vn.fis.training.ordermanagement.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="tbl_order_item")
+@Data
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,4 @@ public class OrderItem {
 
     @Column(name="amount")
     private Double amount;
-
-
 }

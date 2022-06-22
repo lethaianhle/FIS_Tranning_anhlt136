@@ -12,11 +12,11 @@ public interface OrderService {
 
     Order createOrder(Order order);
 
-    Order addOrderItem(Long orderId,OrderItem orderItem);
+    Order addOrderItem(Long orderId, OrderItem orderItem);
 
-    Order removeOrderItem(Long orderId,OrderItem orderItem);
+    Order removeOrderItem(Long orderId, OrderItem orderItem);
 
-    Order updateOrderStatus(Order order,OrderStatus orderStatus);
+    Order updateOrderStatus(Order order, OrderStatus orderStatus);
 
     List<Order> findOrdersBetween(LocalDateTime fromDateTime, LocalDateTime toDateTime);
 

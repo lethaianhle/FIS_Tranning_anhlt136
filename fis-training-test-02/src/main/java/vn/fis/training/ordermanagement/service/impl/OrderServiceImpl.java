@@ -21,11 +21,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(Order order) {
-        return null;
+        order.setOrderDateTime(LocalDateTime.now());
+        return orderRepository.save(order);
     }
 
     @Override
-    public Order addOrderItem(Long orderId,OrderItem orderItem) {
+    public Order addOrderItem(Long orderId, OrderItem orderItem) {
         return null;
     }
 

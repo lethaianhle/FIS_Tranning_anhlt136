@@ -7,4 +7,5 @@ import vn.fis.training.ordermanagement.domain.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+
 }

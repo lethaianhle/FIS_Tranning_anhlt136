@@ -5,4 +5,5 @@ import vn.fis.training.ordermanagement.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
 }

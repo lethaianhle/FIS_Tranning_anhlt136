@@ -7,4 +7,5 @@ import vn.fis.training.ordermanagement.domain.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
+
 }
