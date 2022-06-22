@@ -21,3 +21,8 @@
 /fis-training-test01/.idea/**
 /*/*.iml
 *.iml
+
+/target/
+/.idea/**
+/*.iml
+*.iml
