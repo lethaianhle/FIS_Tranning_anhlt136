@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
-import com.example.demo.core.CaseStatus;
-import com.example.demo.core.CaseType;
+import com.example.demo.model.enums.CaseStatus;
+import com.example.demo.model.enums.CaseType;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,26 +9,34 @@ import java.util.Set;
 @Entity
 @Table(name = "criminal_case")
 public class CriminalCase extends  AbstractEntity{
+
     @Column(name = "number")
     private String number;
+
     @Column(name = "type")
     private CaseType type;
+
     @Column(name = "short_description")
     private String shortDescription;
+
     @Column(name = "detailed_description")
     private String detailedDescription;
+
     @Column(name = "case_status")
     @Enumerated(EnumType.STRING)
     private CaseStatus status;
-    //very big text
+
     @Column(name = "notes")
     private String notes;
+
     @OneToMany(mappedBy = "criminalCase")
     @Transient
     private Set<Evidence> evidenceSet = new HashSet<>();
+
     @OneToOne
     @JoinColumn(name="LeadInvestigator", nullable = false)
     private Detective leadInvestigator;
+
     @ManyToMany
     @JoinTable(name = "case_detective")
     @Transient

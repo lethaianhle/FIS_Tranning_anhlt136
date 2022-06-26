@@ -1,4 +1,4 @@
-package com.example.demo.repo.jdpctemplate;
+package com.example.demo.repository.jdpctemplate;
 
 
 import com.example.demo.model.AbstractEntity;

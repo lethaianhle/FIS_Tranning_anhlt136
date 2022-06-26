@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
 
-import com.example.demo.core.NotFoundException;
+import com.example.demo.exception.NotFoundException;
 import com.example.demo.model.Person;
-import com.example.demo.repo.jpa.PersonRepo;
+import com.example.demo.repository.jpa.PersonRepo;
 import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,32 +24,10 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> findAllByUsernamePart(String part) {
-        List<Person> personList= personRepo.findAll().stream().filter(person -> person.getUsername().contains(part)).collect(Collectors.toList());
-        return personList;
-    }
-
-    @Override
-    public Optional<Person> findByCompleteName(String firstName, String lastName) {
-        Optional<Person> person= personRepo.findAll().stream().filter(person1 ->
-                firstName.equals(person1.getFirstName())).filter(person1 -> lastName.equals(person1.getLastName())).
-                findFirst();
-        if(person.isPresent()) return person;
-        throw new NotFoundException("not found");
-    }
-
-    @Override
     public List<Person> findAll() {
         return personRepo.findAll();
     }
 
-    @Override
-    public int updatePassword(Long personId, String newPass) {
-        Optional<Person> person= personRepo.findById(personId);
-        person.get().setPassword(newPass);
-        if(personRepo.save(person.get())==null) return -1;
-        return 1;
-    }
 
     @Override
     public long count() {
@@ -57,14 +35,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public int createPerson(Long userId, String username, String firstName, String lastName, String password) {
-        Person person= new Person();
-        person.setPassword(password);
-        person.setId(userId);
-        person.setUsername(username);
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        if(personRepo.save(person)!=null) return 1;
-        return -1;
+    public Person save(Person person) {
+        return personRepo.save(person);
     }
+
 }

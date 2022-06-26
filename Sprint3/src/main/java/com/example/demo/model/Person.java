@@ -10,13 +10,13 @@ import java.util.Objects;
 public class Person extends AbstractEntity {
     @Column(name = "username")
     private String username;
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
     @Column(name = "password")
     private String password;
-    @Column(name = "hiringDate")
+    @Column(name = "hiring_date")
     private LocalDateTime hiringDate;
 
     public Person() {

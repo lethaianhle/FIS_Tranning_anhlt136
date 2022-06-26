@@ -13,28 +13,15 @@ class PersonServiceImplTest {
 
     @Test
     void findByUsername() {
-        assertEquals("NguyenTien", personService.findByUsername("NguyenTien").get().getUsername());
+        assertEquals("tt", personService.findByUsername("tt").get().getUsername());
     }
 
-    @Test
-    void findAllByUsernamePart() {
-        assertEquals(1, personService.findAllByUsernamePart("Tien").size());
-    }
-
-    @Test
-    void findByCompleteName() {
-        assertEquals("NguyenTien", personService.findByCompleteName("Tien","Nguyen").get().getUsername());
-    }
 
     @Test
     void findAll() {
         assertEquals(1,personService.findAll().size());
     }
 
-    @Test
-    void updatePassword() {
-        assertEquals(1, personService.updatePassword(1L,"232"));
-    }
 
     @Test
     void count() {
@@ -42,8 +29,18 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void createPerson() {
-        assertEquals(1,personService.createPerson(2L, "username",  "firstName",  "lastName",  "password"));
+    void testFindByUsername() {
+    }
 
+    @Test
+    void testFindAll() {
+    }
+
+    @Test
+    void testCount() {
+    }
+
+    @Test
+    void save() {
     }
 }

@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 
 
-import com.example.demo.core.TrackAction;
+import com.example.demo.model.enums.TrackAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

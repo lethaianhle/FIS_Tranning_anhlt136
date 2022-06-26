@@ -1,11 +1,11 @@
 package com.example.demo.service.impl;
 
 
-import com.example.demo.core.NotFoundException;
+import com.example.demo.exception.NotFoundException;
 import com.example.demo.model.CriminalCase;
 import com.example.demo.model.Evidence;
 import com.example.demo.model.Storage;
-import com.example.demo.repo.jpa.EvidenceRepo;
+import com.example.demo.repository.jpa.EvidenceRepo;
 import com.example.demo.service.EvidenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

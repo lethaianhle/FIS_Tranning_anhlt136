@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
-
-
-import com.example.demo.core.DateProcessor;
+import com.example.demo.util.DateUtil;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -16,10 +14,13 @@ public abstract class AbstractEntity implements Serializable {
     @Id
     @Column(name = "")
     protected Long id;
+
     @Column(name = "version")
     protected int version;
+
     @Column(name = "createdAt")
     protected LocalDateTime createdAt;
+
     @Column(name = "modifiedAt")
     protected LocalDateTime modifiedAt;
 
@@ -70,7 +71,11 @@ public abstract class AbstractEntity implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("AbstractEntity[id='%d%n', createdAt='%s', modifiedAt='%s', version='%d%n']",
-                id, DateProcessor.toString(createdAt), DateProcessor.toString(modifiedAt), version);
+        return "AbstractEntity{" +
+                "id=" + id +
+                ", version=" + version +
+                ", createdAt=" + createdAt +
+                ", modifiedAt=" + modifiedAt +
+                '}';
     }
 }

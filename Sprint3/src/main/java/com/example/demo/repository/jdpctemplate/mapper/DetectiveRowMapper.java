@@ -1,7 +1,7 @@
-package com.example.demo.repo.jdpctemplate.mapper;
+package com.example.demo.repository.jdpctemplate.mapper;
 
-import com.example.demo.core.EmploymentStatus;
-import com.example.demo.core.Rank;
+import com.example.demo.model.enums.EmploymentStatus;
+import com.example.demo.model.enums.Rank;
 import com.example.demo.model.Detective;
 import com.example.demo.model.Person;
 import org.springframework.jdbc.core.RowMapper;
@@ -12,19 +12,19 @@ import java.sql.SQLException;
 public class DetectiveRowMapper implements RowMapper<Detective> {
     @Override
     public Detective mapRow(ResultSet rs, int rowNum) throws SQLException {
-        long id = rs.getLong("ID");
-        String badgeNumber = rs.getString("badgeNumber");
-        String rank = rs.getString("RANK");
-        boolean armed = rs.getBoolean("ARMED");
-        String status = rs.getString("STATUS");
-        long personId = rs.getLong("PERSON_ID");
+        Long id = rs.getLong("id");
+        String badgeNumber = rs.getString("badge_number");
+        String rank = rs.getString("rank");
+        boolean armed = rs.getBoolean("armed");
+        String status = rs.getString("status");
+        long personId = rs.getLong("person_id");
 
         Person person = new Person();
         person.setId(personId);
-        person.setUsername(rs.getString("USERNAME"));
-        person.setFirstName(rs.getString("FIRSTNAME"));
-        person.setLastName(rs.getString("LASTNAME"));
-        person.setHiringDate(rs.getTimestamp("HIRINGDATE").toLocalDateTime());
+        person.setUsername(rs.getString("user_name"));
+        person.setFirstName(rs.getString("first_name"));
+        person.setLastName(rs.getString("last_name"));
+        person.setHiringDate(rs.getTimestamp("hiring_date").toLocalDateTime());
 
         Detective detective = new Detective();
         detective.setId(id);
@@ -33,7 +33,6 @@ public class DetectiveRowMapper implements RowMapper<Detective> {
         detective.setRank(Rank.valueOf(rank));
         detective.setArmed(armed);
         detective.setStatus(EmploymentStatus.valueOf(status));
-
         return detective;
     }
 }

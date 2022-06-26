@@ -1,4 +1,4 @@
-package com.example.demo.repo.jdpctemplate;
+package com.example.demo.repository.jdpctemplate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class JdbcDetectiveRepoTest {
     @Autowired
     private JdbcDetectiveRepo jdbcDetectiveRepo;
-
-    @Test
-    void findByBadgeNumber() {
-    }
 
     @Test
     void findAll() {

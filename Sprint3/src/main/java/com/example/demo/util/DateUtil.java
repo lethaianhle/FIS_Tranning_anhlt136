@@ -1,9 +1,9 @@
-package com.example.demo.core;
+package com.example.demo.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class DateProcessor {
+public class DateUtil {
     public static final String DATE_FORMAT= "yyyy-MM-dd HH:mm";
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
 

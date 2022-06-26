@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
-import com.example.demo.core.EmploymentStatus;
-import com.example.demo.core.Rank;
+import com.example.demo.model.enums.EmploymentStatus;
+import com.example.demo.model.enums.Rank;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -14,18 +14,24 @@ public class Detective extends AbstractEntity {
     @OneToOne
     @JoinColumn(name = "person_id")
     private Person person;
-    @Column(name = "badgeNumber", unique = true)
+
+    @Column(name = "badge_number", unique = true)
     private String badgeNumber;
+
     @Column(name = "`rank`")
     @Enumerated(EnumType.STRING)
     private Rank rank;
+
     @Column(name = "armed")
     private boolean armed;
+
     @Enumerated(EnumType.STRING)
     private EmploymentStatus status;
+
     @ManyToMany(mappedBy = "assigned")
     @Transient
     private Set<CriminalCase> criminalCaseSet;
+
     @OneToMany(mappedBy = "detective")
     @Transient
     private Set<TrackEntry> trackEntrySet;

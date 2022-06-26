@@ -1,10 +1,15 @@
-package com.example.demo.core;
+package com.example.demo.model.enums;
 
 public enum Rank {
+
     TRAINEE(1),
+
     JUNIOR(2),
+
     SENIOR(3),
+
     INSPECTOR(4),
+
     CHIEF_INSPECTOR(5);
 
     private int code;
@@ -16,4 +21,5 @@ public enum Rank {
     public int getCode() {
         return code;
     }
+
 }
