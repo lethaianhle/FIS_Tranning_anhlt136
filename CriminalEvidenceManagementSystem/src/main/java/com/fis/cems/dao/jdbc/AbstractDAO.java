@@ -13,16 +13,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDAO.class);
+
     ResourceBundle resourceBundle = ResourceBundle.getBundle("app-conf");
 
     public Connection getConnection() {
         Connection conn = null;
+
         try {
             conn = ConnectionUtil.getConnection();
 
         } catch (Exception e) {
-            LOGGER.error("Can not connect to database: {}", e.getMessage());
+            LOGGER.error("Fail to connect to database: {}", e.getMessage());
 
             return null;
         }

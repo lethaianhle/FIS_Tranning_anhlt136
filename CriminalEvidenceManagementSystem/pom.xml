@@ -26,7 +26,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <mysql.connector.version>8.0.29</mysql.connector.version>
-        <junit.version>5.8.2</junit.version>
         <c3p0.version>0.9.5.5</c3p0.version>
         <hiraki.version>5.0.1</hiraki.version>
         <slf4j.api.version>1.7.36</slf4j.api.version>
@@ -38,7 +37,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.version}</version>
+            <version>5.8.2</version>
             <scope>compile</scope>
         </dependency>
 

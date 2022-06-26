@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *
+ */
 public class CriminalCaseJdbcDAO extends AbstractDAO<CriminalCase> implements ICriminalCaseDAO {
     @Override
     public List<CriminalCase> findAll() {

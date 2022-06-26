@@ -28,12 +28,14 @@ public class CriminalCaseMapper implements IMapper<CriminalCase> {
             criminalCase.setDetailedDescription(resultSet.getString("detailed_description"));
             criminalCase.setStatus(CaseStatus.valueOf(resultSet.getString("status")));
             criminalCase.setNotes(resultSet.getString("notes"));
-            // continue...
+            // lead investigator
+            Detective detective = new Detective();
+            detective.setId(resultSet.getLong("lead_investigator"));
+            criminalCase.setLeadInvestigator(detective);
 
             return criminalCase;
         } catch (SQLException ex) {
-            LOGGER.error("Can not map data from ResultSet to CriminalCase!");
-            ex.printStackTrace();
+            LOGGER.error("Can not map data from ResultSet to CriminalCase: {}", ex.getMessage(), ex);
             return null;
         }
 
