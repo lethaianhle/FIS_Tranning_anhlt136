@@ -3,14 +3,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost/test_db?useSSL=false
-    password: ggggggggggggggggggggggg
+    password: 123456
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: 'true'
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -21,6 +21,6 @@ logging:
   level:
     com:
       fis:
-        sprint_3: DEBUG
+        sprint_4: DEBUG
 
 
