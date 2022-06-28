@@ -8,25 +8,26 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
+import java.util.HashMap;
+import java.util.Map;
+
 @RestControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestResponseEntityExceptionHandler {
 
-//    @ExceptionHandler(value = {BindException.class})
-//    protected Result<Object> handleBindException(BindException e) {
-//        return Result.fail(ResultEnums.BAD_REQUEST, e.getMessage());
-//    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+    protected Result<Map<String, String>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        Map<String, String> errorMap = new HashMap<>();
+        e.getBindingResult().getFieldErrors().forEach(ex -> {
+            errorMap.put(ex.getField(), ex.getDefaultMessage());
+        });
+        return Result.error(String.valueOf(errorMap));
+    }
 
-//    @ExceptionHandler(CustomerNotFoundException.class)
-//    protected Result<Object> handleCustomerNotFoundException(CustomerNotFoundException ex) {
-//        return Result.error(ResultEnums.ITEM_NOT_FOUND_ERROR.getCode(), ex.getMessage());
-//    }
 //
 //    @ExceptionHandler(ParamInvalidException.class)
 //    protected Result<Object> handleParamInvalidException(ParamInvalidException ex) {

@@ -6,6 +6,7 @@ import com.fis.app.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,7 @@ public class OrderController {
     }
 
     @PutMapping
-    public Result<OrderDTO> create(@RequestBody OrderDTO orderDTO) {
+    public Result<OrderDTO> create(@RequestBody @Valid OrderDTO orderDTO) {
         try {
             OrderDTO result = orderService.created(orderDTO);
             return Result.success(result);
@@ -54,7 +55,7 @@ public class OrderController {
     }
 
     @PostMapping("/addOrderItem")
-    public Result<OrderDTO> addOrderItem(@RequestBody OrderItemDTO orderItemDTO) {
+    public Result<OrderDTO> addOrderItem(@RequestBody @Valid OrderItemDTO orderItemDTO) {
         try {
             OrderDTO result = orderService.addOrderItem(orderItemDTO);
             return Result.success(result);
@@ -65,7 +66,7 @@ public class OrderController {
     }
 
     @PostMapping("/removeOrderItem")
-    public Result<OrderDTO> removeOrderItem(@RequestBody OrderRequestDTO orderRequestDTO) {
+    public Result<OrderDTO> removeOrderItem(@RequestBody @Valid OrderRequestDTO orderRequestDTO) {
         try {
             OrderDTO result = orderService.removeOrderItem(orderRequestDTO);
             return Result.success(result);

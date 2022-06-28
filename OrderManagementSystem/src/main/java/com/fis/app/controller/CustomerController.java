@@ -4,13 +4,16 @@ import com.fis.app.core.Result;
 import com.fis.app.dto.CustomerDTO;
 import com.fis.app.dto.CustomerPaginationDTO;
 import com.fis.app.service.CustomerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/customer")
 @CrossOrigin("*")
+@Slf4j
 public class CustomerController {
 
     CustomerService customerService;
@@ -55,7 +58,7 @@ public class CustomerController {
     }
 
     @PutMapping
-    public Result<List<CustomerDTO>> create(@RequestBody CustomerDTO customerDTO) {
+    public Result<List<CustomerDTO>> create(@RequestBody @Valid CustomerDTO customerDTO) {
         try {
             List<CustomerDTO> result = customerService.create(customerDTO);
             return Result.success(result);
@@ -65,7 +68,7 @@ public class CustomerController {
     }
 
     @PostMapping("/{id}")
-    public Result<CustomerDTO> update(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+    public Result<CustomerDTO> update(@PathVariable Long id, @RequestBody @Valid CustomerDTO customerDTO) {
         try {
             CustomerDTO result = customerService.update(id, customerDTO);
             return Result.success(result);

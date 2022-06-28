@@ -207,9 +207,10 @@ public class OrderServiceImpl implements OrderService {
 
         orderItemRepo.deleteById(orderItem.getId());
         order.getOrderItems().remove(orderItem);
+        order.setTotalAmount(order.getTotalAmount() - orderItem.getAmount());
         Order orderSaved = orderRepo.save(order);
 
-        return modelMapper.map(order, OrderDTO.class);
+        return modelMapper.map(orderSaved, OrderDTO.class);
     }
 
 }

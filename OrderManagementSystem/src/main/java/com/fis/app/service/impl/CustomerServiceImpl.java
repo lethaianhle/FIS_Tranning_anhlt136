@@ -63,6 +63,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> create(CustomerDTO customerDTO) {
+
+        Customer customerByMobile = customerRepo.findByMobile(customerDTO.getMobile());
+
+        if (customerByMobile != null)
+            throw new ParamInvalidException("Thêm mới customer thất bại - customer với mobile :" + customerDTO.getMobile() + " đã tồn tại");
+
         Customer customer = modelMapper.map(customerDTO, Customer.class);
 
         customerRepo.save(customer);

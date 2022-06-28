@@ -21,18 +21,12 @@ import java.util.Objects;
 public class Customer extends AbstractEntity {
 
     @Column(nullable = false)
-    @NotNull
-    @Size(min=10, max=100)
     private String name;
 
     @Column(nullable = false, unique = true)
-    @NotNull
-    @Pattern(regexp="^0[0-9]{1,10}")
     private String mobile;
 
     @Column(nullable = false)
-    @NotNull
-    @Size(min=10, max=100)
     private String address;
 
     @OneToMany(mappedBy = "customer")
